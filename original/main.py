@@ -10,6 +10,7 @@ import re
 import sys
 import time
 import warnings
+from pathlib import Path
 from typing import List, Tuple, Optional
 
 import requests
@@ -125,7 +126,7 @@ def spotify_client() -> spotipy.Spotify:
             client_id="*****",  # e.g. "a1b2c3d4e5f6abc1234567890abcdef1"
             client_secret="*****",  # e.g. "a1b2c3d4e5f6abc1234567890abcdef1"
             show_dialog=True,
-            cache_path="token.txt",
+            cache_path=str(Path(__file__).parent / "token.txt"),
         )
     )
 
@@ -289,7 +290,7 @@ def main():
         for title, artist in not_found:
             print(f"   - {title} — {artist if artist else '(artist unknown)'}")
 
-        output_file = f"unmatched_songs_{year}.txt"
+        output_file = str(Path(__file__).parent / f"unmatched_songs_{year}.txt")
         with open(output_file, "w", encoding="utf-8") as f:
             f.write(f"Unmatched songs from Billboard Hot 100 ({date})\n")
             f.write("=" * 60 + "\n\n")
