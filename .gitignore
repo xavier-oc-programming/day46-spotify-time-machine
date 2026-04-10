@@ -1,0 +1,11 @@
+**/__pycache__/
+.DS_Store
+.idea/
+.vscode/
+*.py[cod]
+.env
+*.log
+old_files/
+token.txt
+advanced/output/
+advanced/data/
